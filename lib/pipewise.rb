@@ -11,11 +11,11 @@ class Pipewise
 
   attr_reader :api_key, :host, :protocol
 
-  def user(email, user_properties = {})
+  def track_user(email, user_properties = {})
     post_request('track', {:email => email}.merge(user_properties))
   end
 
-  def event(user_email, event_type, event_properties = {})
+  def track_event(user_email, event_type, event_properties = {})
     post_request('track_event', {:email => user_email, :type => event_type}.merge(event_properties))
   end
 
@@ -34,4 +34,3 @@ class Pipewise
   end
   private :post_request
 end
-

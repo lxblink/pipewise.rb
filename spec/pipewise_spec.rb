@@ -10,7 +10,7 @@ describe Pipewise do
     context 'with a valid email address' do
       subject do
         VCR.use_cassette 'valid email for user' do
-          pipewise.user('valid@mail.com', {:created => Time.now.to_i * 1000, 
+          pipewise.track_user('valid@mail.com', {:created => Time.now.to_i * 1000, 
                                            :custom_property => 'Custom property value!'})
         end
       end
@@ -22,7 +22,7 @@ describe Pipewise do
       it 'raises an InvalidApiKeyError' do
         expect {
           VCR.use_cassette 'invalid api key for user' do
-            invalid_pipewise.user('user@mail.com')
+            invalid_pipewise.track_user('user@mail.com')
           end
         }.to raise_error Pipewise::InvalidApiKeyError
       end
@@ -31,7 +31,7 @@ describe Pipewise do
     context 'with an invalid email address' do
       let(:vcr_request) do
         VCR.use_cassette 'invalid email for user' do
-          pipewise.user('user.com')
+          pipewise.track_user('user.com')
         end
       end
 
@@ -57,7 +57,7 @@ describe Pipewise do
     context 'with a valid email address and event type' do
       subject do
         VCR.use_cassette 'valid arguments for user' do
-          pipewise.event('valid@mail.com', 'my_event_type', 
+          pipewise.track_event('valid@mail.com', 'my_event_type', 
                          {:custom_property => 'Custom property value!'})
         end
       end
@@ -69,7 +69,7 @@ describe Pipewise do
       it 'raises an InvalidApiKeyError' do
         expect {
           VCR.use_cassette 'invalid api key for event' do
-            invalid_pipewise.event('event@mail.com', 'My Event Type')
+            invalid_pipewise.track_event('event@mail.com', 'My Event Type')
           end
         }.to raise_error Pipewise::InvalidApiKeyError
       end
@@ -78,7 +78,7 @@ describe Pipewise do
     context 'with an invalid email address' do
       let(:vcr_request) do
         VCR.use_cassette 'invalid email for event' do
-          pipewise.event('event.com', 'event_type')
+          pipewise.track_event('event.com', 'event_type')
         end
       end
 
@@ -102,7 +102,7 @@ describe Pipewise do
     context 'with a nil event type' do
       let(:vcr_request) do
         VCR.use_cassette 'nil event type' do
-          pipewise.event('mail@event.com', nil)
+          pipewise.track_event('mail@event.com', nil)
         end
       end
 
@@ -124,4 +124,3 @@ describe Pipewise do
     end
   end
 end
-
