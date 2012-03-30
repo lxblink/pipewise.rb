@@ -1,0 +1,46 @@
+--- 
+http_interactions: 
+- request: 
+    method: post
+    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track
+    body: 
+      encoding: US-ASCII
+      string: email=valid%40mail.com&created=1333085619000&custom_property=Custom%20property%20value%21
+    headers: 
+      accept: 
+      - "*/*"
+      user-agent: 
+      - Ruby
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: 
+    status: 
+      code: 200
+      message: "OK "
+    headers: 
+      content-type: 
+      - application/json
+      x-ua-compatible: 
+      - IE=Edge
+      etag: 
+      - "\"7215ee9c7d9dc229d2921a40e899ec5f\""
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      x-request-id: 
+      - ddc52de5da497387ffb84313794ef86e
+      x-runtime: 
+      - "0.086115"
+      content-length: 
+      - "1"
+      server: 
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date: 
+      - Fri, 30 Mar 2012 05:33:40 GMT
+      connection: 
+      - Keep-Alive
+    body: 
+      encoding: US-ASCII
+      string: " "
+    http_version: "1.1"
+  recorded_at: Fri, 30 Mar 2012 05:33:40 GMT
+recorded_with: VCR 2.0.0
