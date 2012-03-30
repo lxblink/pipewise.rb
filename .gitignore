@@ -1,2 +1,14 @@
 *.swp
+
+# rcov generated
+coverage
+coverage.data
+
+# rdoc generated
+rdoc
+
+# bundler
 .bundle
+
+# jeweler generated
+pkg
