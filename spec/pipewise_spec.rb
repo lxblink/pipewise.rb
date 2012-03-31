@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'pipewise'
 
 describe Pipewise do
-  let(:init_options) { {host: 'localhost:3000', insecure: true} }
+  let(:init_options) { {:host => 'localhost:3000', :insecure => true} }
   let(:pipewise) { Pipewise.new('04c66b8488569745e83c56b4c2774fcc6556add4', init_options) }
   let(:invalid_pipewise) { Pipewise.new('api123', init_options) }
 
