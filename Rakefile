@@ -12,11 +12,12 @@ end
 require 'rake'
 
 require 'jeweler'
+require 'jeweler/tasks'
 require './lib/pipewise/version.rb'
 Jeweler::Tasks.new do |gem|
   gem.name = "pipewise.rb"
   gem.version = Pipewise::Version::STRING
-  gem.homepage = "http://github.com/joinwire/pipewise.rb"
+  gem.homepage = "http://joinwire.github.com/pipewise.rb/"
   gem.license = "MIT"
   gem.summary = %Q{A Ruby library for sending user and event data to Pipewise}
   gem.description = <<-EOS
