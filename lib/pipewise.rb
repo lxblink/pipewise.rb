@@ -1,18 +1,11 @@
 require 'net/http'
 require 'json'
 require 'pipewise/errors'
+require 'pipewise/configuration'
 
-class Pipewise
-  # Constructor takes the Pipewise API key (required), and optionally
-  # takes a hash which allows you to specify :insecure => true
-  # for use of HTTP instead of HTTPS. HTTPS is the default.
-  def initialize(api_key, options = {})
-    @api_key = api_key
-    @host = options[:host] || 'api.pipewise.com'
-    @protocol = options[:insecure] ? 'http:' : 'https:'
-  end
-
-  attr_reader :api_key, :host, :protocol
+module Pipewise
+  extend Configuration
+  extend self
 
   # Sends user info to Pipewise for tracking the user identifed by the given email 
   # address (required), and supports an optional hash of properties for that user.
@@ -34,13 +27,22 @@ class Pipewise
     post_request('track_event', {:email => user_email, :type => event_type}.merge(event_properties))
   end
 
+  # Convenience method for reporting purchase events to Pipewise. Internally this method
+  # calls track event, specifying the given amount as the purchase amount
+  def track_purchase(user_email, amount, purchase_event_properties = {})
+    raise InvalidRequestError.new("amount cannot be nil for purchase events") unless amount
+    raise ArgumentError.new("amount must be a number") unless amount.to_s =~ /\A[+-]?\d*(\.\d+)?\Z/
+    track_event(user_email, 'purchase', purchase_event_properties.merge(:amount => amount))
+  end
+
   def post_request(path, params)
+    raise InvalidApiKeyError.new("You must specify an API key") unless api_key
     uri = URI("#{protocol}//#{host}/apps/#{api_key}/#{path}")
-    response = Net::HTTP.post_form(uri, params)
+    response = post_form(uri, params)
     return true if response.code.start_with? '2'
     case response.code
     when '404'
-      raise InvalidApiKeyError.new("#{@api_key} is not a valid Pipewise API key")
+      raise InvalidApiKeyError.new("#{api_key} is not a valid Pipewise API key")
     when '422'
       error_str = (response.content_type =~ /json/ && response.body !~ /\A\s*\Z/)? 
         ": \n#{JSON.parse(response.body)['errors'].join('\n')}" : ''
@@ -48,4 +50,14 @@ class Pipewise
     end
   end
   private :post_request
+
+  def post_form(uri, params)
+    req = Net::HTTP::Post.new(uri.request_uri)
+    req.form_data = params
+    req['User-Agent'] = user_agent
+    Net::HTTP.new(uri.host, uri.port).start do |http|
+      http.request(req)
+    end
+  end
+  private :post_form
 end

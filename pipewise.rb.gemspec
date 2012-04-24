@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pipewise.rb"
-  s.version = "0.1.2"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Watts"]
-  s.date = "2012-04-02"
+  s.date = "2012-04-24"
   s.description = "    pipewise.rb is a gem which allows you to send user and event data \n    to Pipewise via HTTP. It utilizes the same HTTP API endpoints as \n    the Pipewise JavaScript API.\n"
   s.email = "jeff.watts@pipewise.com"
   s.extra_rdoc_files = [
@@ -25,16 +25,11 @@ Gem::Specification.new do |s|
     "README.markdown",
     "Rakefile",
     "lib/pipewise.rb",
+    "lib/pipewise/configuration.rb",
     "lib/pipewise/errors.rb",
     "lib/pipewise/version.rb",
     "pipewise.rb.gemspec",
-    "spec/fixtures/vcr_cassettes/invalid_api_key_for_event.yml",
-    "spec/fixtures/vcr_cassettes/invalid_api_key_for_user.yml",
-    "spec/fixtures/vcr_cassettes/invalid_email_for_event.yml",
-    "spec/fixtures/vcr_cassettes/invalid_email_for_user.yml",
-    "spec/fixtures/vcr_cassettes/nil_event_type.yml",
-    "spec/fixtures/vcr_cassettes/valid_arguments_for_user.yml",
-    "spec/fixtures/vcr_cassettes/valid_email_for_user.yml",
+    "spec/fixtures/vcr_cassettes/Pipewise.yml",
     "spec/pipewise_spec.rb",
     "spec/spec_helper.rb"
   ]

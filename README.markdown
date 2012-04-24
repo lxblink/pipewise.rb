@@ -12,13 +12,19 @@ You must have a Pipewise account and an API key to use this gem. You can find yo
 
 ## Usage
 
-To send data to Pipewise, you must first create an instance of the `Pipewise` class and pass the constructor your API key:
+To send data to Pipewise, you must first initialize the `Pipewise` module with your API key:
 
-    pw = Pipewise.new('04c66b8488569745e83c56b4c2774fcc6556add4')
+    # This could go in an initializer file
+    Pipewise.config do |config|
+      config.api_key = '04c66b8488569745e83c56b4c2774fcc6556add4'
+    end
 
-By default, all communication with api.pipewise.com occurs via HTTPS. If you prefer to use HTTP, pass `:insecure => true` to the constructor:
+By default, all communication with api.pipewise.com occurs via HTTPS. If you prefer to use HTTP, set `protocol = 'http:'` in the initializer:
 
-    pw = Pipewise.new('04c66b8488569745e83c56b4c2774fcc6556add4', :insecure => true)
+    Pipewise.config do |config|
+      config.api_key = '04c66b8488569745e83c56b4c2774fcc6556add4'
+      config.protocol = 'http:'
+    end
 
 With this object, you can send user or event details to Pipewise.
 
@@ -28,8 +34,8 @@ The `track_user` method will create a new user or update an existing one. The me
 
     # Load a user of your app
     my_app_user = User.find(my_user_id)
-    pw.track_user(my_app_user.email, :created => my_app_user.created_at.to_i * 1000,
-                  :subscription_type => 'premium')
+    Pipewise.track_user(my_app_user.email, :created => my_app_user.created_at.to_i * 1000,
+                        :subscription_type => 'premium')
 
 If the call succeeds, `track_user` will return true. If there is a problem, an exception will be raised (more on this below).
 
@@ -37,10 +43,18 @@ If the call succeeds, `track_user` will return true. If there is a problem, an e
 
 To track a user lifecycle event, use `track_event`. This method requires the email address of the user you wish to tie the event to and the type of event that you are recording. It also accepts an optional hash of event properties.
 
-  pw.track_event('your-user@email.com', 'Purchased Goods', 
-                 :purchase_category => 'clothing', :price => 99.95)
+    Pipewise.track_event('your-user@email.com', 'Purchased Goods', 
+                         :purchase_category => 'clothing', :price => 99.95)
 
 If the call succeeds, `track_event` will return true. If there is a problem, an exception will be raised. See the next section for more details on this.
+
+### Tracking Purchases
+
+The `track_purchase` method provides a convenient way to track a user's purchases. This method requires the email address of the user you wish to tie the purchase to and the amount of the purchase, which should be a numeric value. This method can also accept an optional hash of properties describing the purchase.
+
+    Pipewise.track_purchase('your-user@email.com', 19.95)
+
+Under the covers, this is just a convenience method that wraps a call to `track_event`.
 
 ### Exceptions
 
