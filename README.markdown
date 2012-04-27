@@ -15,13 +15,13 @@ You must have a Pipewise account and an API key to use this gem. You can find yo
 To send data to Pipewise, you must first initialize the `Pipewise` module with your API key:
 
     # This could go in an initializer file
-    Pipewise.config do |config|
+    Pipewise.configure do |config|
       config.api_key = '04c66b8488569745e83c56b4c2774fcc6556add4'
     end
 
 By default, all communication with api.pipewise.com occurs via HTTPS. If you prefer to use HTTP, set `protocol = 'http:'` in the initializer:
 
-    Pipewise.config do |config|
+    Pipewise.configure do |config|
       config.api_key = '04c66b8488569745e83c56b4c2774fcc6556add4'
       config.protocol = 'http:'
     end
