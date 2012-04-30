@@ -58,7 +58,7 @@ Under the covers, this is just a convenience method that wraps a call to `track_
 
 ### Exceptions
 
-Unsuccessful calls to `track_user` and `track_event` will raise exceptions. The following exceptions are possible:
+Unsuccessful calls to `track_user`, `track_event`, and `track_purchase` will raise exceptions. The following exceptions are possible:
 
  * `Pipewise::InvalidApiKeyError` if the API key is invalid
  * `Pipewise::InvalidRequestError` if Pipewise could not process your request due to errors in the format of your request, such as an invalid email address. The exception message may contain more information on why the request failed.
