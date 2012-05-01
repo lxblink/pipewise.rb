@@ -65,7 +65,7 @@ describe Pipewise do
   describe '.track_user' do
     context 'with a valid email address' do
       subject do
-        pipewise.track_user('valid@mail.com', {:created => Time.utc(2012, 5, 7, 23, 30).to_i * 1000,
+        pipewise.track_user('valid@mail.com', {:created => Time.utc(2012, 5, 7, 23, 30),
                             :custom_property => 'Custom property value!'})
       end
 
