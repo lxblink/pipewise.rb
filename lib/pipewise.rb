@@ -15,7 +15,8 @@ module Pipewise
   # for this user, then add :pw_no_event => true to the property hash. Each call to
   # this method will make a blocking HTTP request.
   def track_user(email, user_properties = {})
-    post_request('track', {:email => email}.merge(user_properties))
+    post_request('track', {:email => email}.merge(
+        user_properties.has_key?(:created) ? user_properties.merge(created: user_properties[:created].to_i * 1000) : user_properties))
   end
 
   # Sends event info to Pipewise for the user identifed by the given email 

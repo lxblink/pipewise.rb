@@ -34,7 +34,7 @@ The `track_user` method will create a new user or update an existing one. The me
 
     # Load a user of your app
     my_app_user = User.find(my_user_id)
-    Pipewise.track_user(my_app_user.email, :created => my_app_user.created_at.to_i * 1000,
+    Pipewise.track_user(my_app_user.email, :created => my_app_user.created_at,
                         :subscription_type => 'premium')
 
 If the call succeeds, `track_user` will return true. If there is a problem, an exception will be raised (more on this below).
