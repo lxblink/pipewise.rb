@@ -9,14 +9,19 @@ module Pipewise
 
   # Sends user info to Pipewise for tracking the user identifed by the given email 
   # address (required), and supports an optional hash of properties for that user.
+  #
   # Pipewise will update the given user's properties each time this method is called
   # and will record a sighting event for this user, which updates the last active 
   # timestamp for this user. If you do NOT want Pipewise to record a sighting event
   # for this user, then add :pw_no_event => true to the property hash. Each call to
   # this method will make a blocking HTTP request.
+  #
+  # :created (optional) - If you want to specify the time you first encountered this
+  # customer set :created to a valid Time instance. If omitted, it will be set to the
+  # current time by the Pipewise server.
   def track_user(email, user_properties = {})
     post_request('track', {:email => email}.merge(
-        user_properties.has_key?(:created) ? user_properties.merge(created: user_properties[:created].to_i * 1000) : user_properties))
+        user_properties.has_key?(:created) ? user_properties.merge(:created => user_properties[:created].to_i * 1000) : user_properties))
   end
 
   # Sends event info to Pipewise for the user identifed by the given email 
