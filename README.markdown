@@ -31,6 +31,8 @@ With this object, you can send user or event details to Pipewise.
 ### Tracking Users
 
 The `track_user` method will create a new user or update an existing one. The method requires the user's email address, and also takes an optional hash of custom and standard user properties.
+If you want to specify the time you first encountered this customer set :created to a valid Time instance. If omitted, it will be set to the current time by the Pipewise server. This needs only be set when tracking a user for the first time. Subsequent updates will preserve the original value.
+
 
     # Load a user of your app
     my_app_user = User.find(my_user_id)
