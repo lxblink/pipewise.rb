@@ -330,4 +330,53 @@ http_interactions:
       string: " "
     http_version: "1.1"
   recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
+- request: 
+    method: post
+    uri: https://dev2.pipewise.com/apps/3febe9e13aab5db4b53da9742bb5925956bb44b2/track
+    body: 
+      encoding: US-ASCII
+      string: email=valid%40mail.com&created=1336433400000&custom_property=Custom%20property%20value%21
+    headers: 
+      accept: 
+      - "*/*"
+      user-agent: 
+      - Pipewise Ruby Gem v. 0.2.1
+      content-type: 
+      - application/x-www-form-urlencoded
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - application/json
+      transfer-encoding: 
+      - chunked
+      connection: 
+      - keep-alive
+      status: 
+      - "200"
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.11
+      x-ua-compatible: 
+      - IE=Edge
+      etag: 
+      - "\"7215ee9c7d9dc229d2921a40e899ec5f\""
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      x-request-id: 
+      - 94b18473e5b5f1c0d13b5c6478f5d0b6
+      x-runtime: 
+      - "0.103260"
+      date: 
+      - Wed, 02 May 2012 00:31:14 GMT
+      x-rack-cache: 
+      - invalidate, pass
+      server: 
+      - nginx/1.0.10 + Phusion Passenger 3.0.11 (mod_rails/mod_rack)
+    body: 
+      encoding: US-ASCII
+      string: " "
+    http_version: "1.1"
+  recorded_at: Wed, 02 May 2012 00:31:15 GMT
 recorded_with: VCR 2.0.0

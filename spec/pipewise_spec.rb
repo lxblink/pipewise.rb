@@ -10,7 +10,6 @@ describe Pipewise do
       c.host = 'localhost:3000'
       c.protocol = 'http:'
     end
-    Pipewise
   end
 
   let(:invalid_pipewise) do
@@ -19,10 +18,17 @@ describe Pipewise do
       c.host = 'localhost:3000'
       c.protocol = 'http:'
     end
-    Pipewise
   end
 
   let(:unconfigured_pipewise) { Pipewise.reset }
+
+  let(:https_pipewise) do
+    Pipewise.configure do |c|
+      c.api_key = '3febe9e13aab5db4b53da9742bb5925956bb44b2'
+      c.host = 'dev2.pipewise.com'
+      c.protocol = 'https:'
+    end
+  end
 
   shared_examples_for 'invalid request' do
     it 'raises an InvalidRequestError' do
@@ -64,12 +70,22 @@ describe Pipewise do
 
   describe '.track_user' do
     context 'with a valid email address' do
-      subject do
-        pipewise.track_user('valid@mail.com', {:created => Time.utc(2012, 5, 7, 23, 30),
-                            :custom_property => 'Custom property value!'})
+      shared_examples_for 'valid config' do
+        it 'returns true' do
+          subject.track_user('valid@mail.com', {:created => Time.utc(2012, 5, 7, 23, 30),
+                             :custom_property => 'Custom property value!'}).should be_true
+        end
       end
 
-      it { should be_true }
+      context 'with an http configuration' do
+        subject { pipewise }
+        it_behaves_like 'valid config'
+      end
+
+      context 'with an https configuration' do
+        subject { https_pipewise }
+        it_behaves_like 'valid config'
+      end
     end
 
     context 'with an invalid API key' do

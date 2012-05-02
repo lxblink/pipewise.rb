@@ -14,6 +14,7 @@ module Pipewise
     # Allow initializers to set configuration options in a block
     def configure
       yield self
+      self
     end
 
     def reset

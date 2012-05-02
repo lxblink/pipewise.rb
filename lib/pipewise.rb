@@ -1,4 +1,5 @@
 require 'net/http'
+require 'net/https'
 require 'json'
 require 'pipewise/errors'
 require 'pipewise/configuration'
@@ -21,7 +22,9 @@ module Pipewise
   # current time by the Pipewise server.
   def track_user(email, user_properties = {})
     post_request('track', {:email => email}.merge(
-        user_properties.has_key?(:created) ? user_properties.merge(:created => user_properties[:created].to_i * 1000) : user_properties))
+        user_properties.has_key?(:created) ?
+          user_properties.merge(:created => user_properties[:created].to_i * 1000) :
+          user_properties))
   end
 
   # Sends event info to Pipewise for the user identifed by the given email 
@@ -61,9 +64,9 @@ module Pipewise
     req = Net::HTTP::Post.new(uri.request_uri)
     req.form_data = params
     req['User-Agent'] = user_agent
-    Net::HTTP.new(uri.host, uri.port).start do |http|
-      http.request(req)
-    end
+    socket = Net::HTTP.new(uri.host, uri.port)
+    socket.use_ssl = true if protocol.downcase == 'https:'
+    socket.start { |http| http.request(req) }
   end
   private :post_form
 end
