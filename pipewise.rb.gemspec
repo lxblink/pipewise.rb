@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pipewise.rb"
-  s.version = "0.2.1"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Watts"]
-  s.date = "2012-04-24"
+  s.date = "2012-05-02"
   s.description = "    pipewise.rb is a gem which allows you to send user and event data \n    to Pipewise via HTTP. It utilizes the same HTTP API endpoints as \n    the Pipewise JavaScript API.\n"
   s.email = "jeff.watts@pipewise.com"
   s.extra_rdoc_files = [
