@@ -24,9 +24,10 @@ describe Pipewise do
 
   let(:https_pipewise) do
     Pipewise.configure do |c|
-      c.api_key = '3febe9e13aab5db4b53da9742bb5925956bb44b2'
+      c.api_key = '63cc6efec3da9dc6c569071335456c85c048fa17'
       c.host = 'dev2.pipewise.com'
       c.protocol = 'https:'
+      c.ca_file = '/opt/local/share/curl/curl-ca-bundle.crt'
     end
   end
 

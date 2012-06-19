@@ -2,7 +2,7 @@ require 'pipewise/version'
 
 module Pipewise
   module Configuration
-    VALID_OPTIONS = [:api_key, :host, :protocol, :user_agent].freeze
+    VALID_OPTIONS = [:api_key, :host, :protocol, :user_agent, :ca_file, :ca_path].freeze
 
     DEFAULT_API_KEY = nil
     DEFAULT_HOST = 'api.pipewise.com'.freeze
