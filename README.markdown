@@ -10,6 +10,7 @@ pipewise.rb allows you to send user and event data to Pipewise via HTTP. You can
 
 You must have a Pipewise account and an API key to use this gem. You can find your API key by logging into [pipewise.com](http://pipewise.com).
 
+
 ## Usage
 
 To send data to Pipewise, you must first initialize the `Pipewise` module with your API key:
@@ -27,6 +28,10 @@ By default, all communication with api.pipewise.com occurs via HTTPS. If you pre
     end
 
 With this object, you can send user or event details to Pipewise.
+
+_Note on HTTPS_: When using HTTPS, you may see errors when attempting to verify the SSL certificate if Ruby cannot find a root certificate to trust. If this happens, you can set the `ca_file` or `ca_path` in the `Pipewise.configure` block. For example, the following works on Mac OS X if you have the curl-ca-bundle installed:
+
+    config.ca_file = '/opt/local/share/curl/curl-ca-bundle.crt'
 
 ### Tracking Users
 
