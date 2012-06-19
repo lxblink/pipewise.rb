@@ -1,382 +1,382 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: post
     uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track
-    body: 
+    body:
       encoding: US-ASCII
-      string: email=valid%40mail.com&created=1336433400000&custom_property=Custom%20property%20value%21
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.0
-      content-type: 
+      string: email=valid%40mail.com&created=1336433400000&custom_property=Custom+property+value%21
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
       - application/x-www-form-urlencoded
-  response: 
-    status: 
+  response:
+    status:
       code: 200
-      message: "OK "
-    headers: 
-      content-type: 
+      message: ! 'OK '
+    headers:
+      content-type:
       - application/json
-      x-ua-compatible: 
+      x-ua-compatible:
       - IE=Edge
-      etag: 
-      - "\"7215ee9c7d9dc229d2921a40e899ec5f\""
-      cache-control: 
+      etag:
+      - ! '"7215ee9c7d9dc229d2921a40e899ec5f"'
+      cache-control:
       - max-age=0, private, must-revalidate
-      x-request-id: 
-      - 6cce8aaa3c089f261c76ac2369362392
-      x-runtime: 
-      - "0.216280"
-      content-length: 
-      - "1"
-      server: 
+      x-request-id:
+      - 7aaa956d2bd1063cf0c44a79a8280595
+      x-runtime:
+      - '0.230474'
+      content-length:
+      - '1'
+      server:
       - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
-      date: 
-      - Mon, 23 Apr 2012 23:47:26 GMT
-      connection: 
+      date:
+      - Tue, 19 Jun 2012 21:12:56 GMT
+      connection:
       - Keep-Alive
-    body: 
+    body:
       encoding: US-ASCII
-      string: " "
-    http_version: "1.1"
-  recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
-- request: 
+      string: ! ' '
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:56 GMT
+- request:
     method: post
-    uri: http://localhost:3000/apps/api123/track
-    body: 
+    uri: https://dev2.pipewise.com/apps/63cc6efec3da9dc6c569071335456c85c048fa17/track
+    body:
       encoding: US-ASCII
-      string: email=user%40mail.com
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.0
-      content-type: 
+      string: email=valid%40mail.com&created=1336433400000&custom_property=Custom+property+value%21
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
       - application/x-www-form-urlencoded
-  response: 
-    status: 
-      code: 404
-      message: "Not Found "
-    headers: 
-      content-type: 
-      - application/json
-      x-ua-compatible: 
-      - IE=Edge
-      cache-control: 
-      - no-cache
-      x-request-id: 
-      - e95e1ae06f88c5be93c154715f4bc484
-      x-runtime: 
-      - "0.009821"
-      content-length: 
-      - "1"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
-      date: 
-      - Mon, 23 Apr 2012 23:47:26 GMT
-      connection: 
-      - Keep-Alive
-    body: 
-      encoding: US-ASCII
-      string: " "
-    http_version: "1.1"
-  recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
-- request: 
-    method: post
-    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track
-    body: 
-      encoding: US-ASCII
-      string: email=user.com
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.0
-      content-type: 
-      - application/x-www-form-urlencoded
-  response: 
-    status: 
-      code: 422
-      message: ""
-    headers: 
-      content-type: 
-      - application/json
-      x-ua-compatible: 
-      - IE=Edge
-      cache-control: 
-      - no-cache
-      x-request-id: 
-      - d2f730722367399d10cb5e0b9dc96834
-      x-runtime: 
-      - "0.042537"
-      content-length: 
-      - "50"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
-      date: 
-      - Mon, 23 Apr 2012 23:47:26 GMT
-      connection: 
-      - Keep-Alive
-    body: 
-      encoding: US-ASCII
-      string: "{\"errors\":[\"Email must be a valid email address\"]}"
-    http_version: "1.1"
-  recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
-- request: 
-    method: post
-    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track_event
-    body: 
-      encoding: US-ASCII
-      string: email=valid%40mail.com&type=my_event_type&custom_property=Custom%20property%20value%21
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.0
-      content-type: 
-      - application/x-www-form-urlencoded
-  response: 
-    status: 
-      code: 202
-      message: "Accepted "
-    headers: 
-      content-type: 
-      - application/json
-      x-ua-compatible: 
-      - IE=Edge
-      cache-control: 
-      - no-cache
-      x-request-id: 
-      - 8f2f1282c0eda9109b5e2675f571c72a
-      x-runtime: 
-      - "0.027360"
-      content-length: 
-      - "1"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
-      date: 
-      - Mon, 23 Apr 2012 23:47:26 GMT
-      connection: 
-      - Keep-Alive
-    body: 
-      encoding: US-ASCII
-      string: " "
-    http_version: "1.1"
-  recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
-- request: 
-    method: post
-    uri: http://localhost:3000/apps/api123/track_event
-    body: 
-      encoding: US-ASCII
-      string: email=event%40mail.com&type=My%20Event%20Type
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.0
-      content-type: 
-      - application/x-www-form-urlencoded
-  response: 
-    status: 
-      code: 404
-      message: "Not Found "
-    headers: 
-      content-type: 
-      - application/json
-      x-ua-compatible: 
-      - IE=Edge
-      cache-control: 
-      - no-cache
-      x-request-id: 
-      - 2e5e3ce0aafcbae88bef366854ecd965
-      x-runtime: 
-      - "0.009838"
-      content-length: 
-      - "1"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
-      date: 
-      - Mon, 23 Apr 2012 23:47:26 GMT
-      connection: 
-      - Keep-Alive
-    body: 
-      encoding: US-ASCII
-      string: " "
-    http_version: "1.1"
-  recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
-- request: 
-    method: post
-    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track_event
-    body: 
-      encoding: US-ASCII
-      string: email=event.com&type=event_type
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.0
-      content-type: 
-      - application/x-www-form-urlencoded
-  response: 
-    status: 
-      code: 422
-      message: ""
-    headers: 
-      content-type: 
-      - application/json
-      x-ua-compatible: 
-      - IE=Edge
-      cache-control: 
-      - no-cache
-      x-request-id: 
-      - 9d7fb7899a755bdd413605f88e4d78ec
-      x-runtime: 
-      - "0.010034"
-      content-length: 
-      - "49"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
-      date: 
-      - Mon, 23 Apr 2012 23:47:26 GMT
-      connection: 
-      - Keep-Alive
-    body: 
-      encoding: US-ASCII
-      string: "{\"errors\":[\"A valid email address is required.\"]}"
-    http_version: "1.1"
-  recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
-- request: 
-    method: post
-    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track_event
-    body: 
-      encoding: US-ASCII
-      string: email=mail%40event.com
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.0
-      content-type: 
-      - application/x-www-form-urlencoded
-  response: 
-    status: 
-      code: 422
-      message: ""
-    headers: 
-      content-type: 
-      - application/json
-      x-ua-compatible: 
-      - IE=Edge
-      cache-control: 
-      - no-cache
-      x-request-id: 
-      - 81a562302fd7f485cd5da7c12805fde6
-      x-runtime: 
-      - "0.010562"
-      content-length: 
-      - "41"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
-      date: 
-      - Mon, 23 Apr 2012 23:47:26 GMT
-      connection: 
-      - Keep-Alive
-    body: 
-      encoding: US-ASCII
-      string: "{\"errors\":[\"An event type is required.\"]}"
-    http_version: "1.1"
-  recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
-- request: 
-    method: post
-    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track_event
-    body: 
-      encoding: US-ASCII
-      string: email=valid%40mail.com&type=purchase&amount=39.95
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.0
-      content-type: 
-      - application/x-www-form-urlencoded
-  response: 
-    status: 
-      code: 202
-      message: "Accepted "
-    headers: 
-      content-type: 
-      - application/json
-      x-ua-compatible: 
-      - IE=Edge
-      cache-control: 
-      - no-cache
-      x-request-id: 
-      - 204b976f187df32bc73e9d7207b2510d
-      x-runtime: 
-      - "0.025653"
-      content-length: 
-      - "1"
-      server: 
-      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
-      date: 
-      - Mon, 23 Apr 2012 23:47:26 GMT
-      connection: 
-      - Keep-Alive
-    body: 
-      encoding: US-ASCII
-      string: " "
-    http_version: "1.1"
-  recorded_at: Mon, 23 Apr 2012 23:47:26 GMT
-- request: 
-    method: post
-    uri: https://dev2.pipewise.com/apps/3febe9e13aab5db4b53da9742bb5925956bb44b2/track
-    body: 
-      encoding: US-ASCII
-      string: email=valid%40mail.com&created=1336433400000&custom_property=Custom%20property%20value%21
-    headers: 
-      accept: 
-      - "*/*"
-      user-agent: 
-      - Pipewise Ruby Gem v. 0.2.1
-      content-type: 
-      - application/x-www-form-urlencoded
-  response: 
-    status: 
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      content-type: 
+    headers:
+      content-type:
       - application/json
-      transfer-encoding: 
+      transfer-encoding:
       - chunked
-      connection: 
+      connection:
       - keep-alive
-      status: 
-      - "200"
-      x-powered-by: 
+      status:
+      - '200'
+      x-powered-by:
       - Phusion Passenger (mod_rails/mod_rack) 3.0.11
-      x-ua-compatible: 
+      x-ua-compatible:
       - IE=Edge
-      etag: 
-      - "\"7215ee9c7d9dc229d2921a40e899ec5f\""
-      cache-control: 
+      etag:
+      - ! '"7215ee9c7d9dc229d2921a40e899ec5f"'
+      cache-control:
       - max-age=0, private, must-revalidate
-      x-request-id: 
-      - 94b18473e5b5f1c0d13b5c6478f5d0b6
-      x-runtime: 
-      - "0.103260"
-      date: 
-      - Wed, 02 May 2012 00:31:14 GMT
-      x-rack-cache: 
+      x-request-id:
+      - c80fc188ea0a62df8bb60616b2ec06f9
+      x-runtime:
+      - '0.024691'
+      date:
+      - Tue, 19 Jun 2012 21:12:57 GMT
+      x-rack-cache:
       - invalidate, pass
-      server: 
-      - nginx/1.0.10 + Phusion Passenger 3.0.11 (mod_rails/mod_rack)
-    body: 
+      server:
+      - nginx/1.0.15 + Phusion Passenger 3.0.11 (mod_rails/mod_rack)
+    body:
       encoding: US-ASCII
-      string: " "
-    http_version: "1.1"
-  recorded_at: Wed, 02 May 2012 00:31:15 GMT
-recorded_with: VCR 2.0.0
+      string: ! ' '
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:57 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/apps/api123/track
+    body:
+      encoding: US-ASCII
+      string: email=user%40mail.com
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 404
+      message: ! 'Not Found '
+    headers:
+      content-type:
+      - application/json
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-cache
+      x-request-id:
+      - c0a0f7f4d73754c80040c2462196f926
+      x-runtime:
+      - '0.018606'
+      content-length:
+      - '1'
+      server:
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date:
+      - Tue, 19 Jun 2012 21:12:57 GMT
+      connection:
+      - Keep-Alive
+    body:
+      encoding: US-ASCII
+      string: ! ' '
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:57 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track
+    body:
+      encoding: US-ASCII
+      string: email=user.com
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: ''
+    headers:
+      content-type:
+      - application/json
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-cache
+      x-request-id:
+      - 88de4a7d06a026ca3fc8e73895fbbb23
+      x-runtime:
+      - '0.065220'
+      content-length:
+      - '50'
+      server:
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date:
+      - Tue, 19 Jun 2012 21:12:57 GMT
+      connection:
+      - Keep-Alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"errors":["Email must be a valid email address"]}'
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:57 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track_event
+    body:
+      encoding: US-ASCII
+      string: email=valid%40mail.com&type=my_event_type&custom_property=Custom+property+value%21
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: ! 'Accepted '
+    headers:
+      content-type:
+      - application/json
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-cache
+      x-request-id:
+      - 2d12f571b24b573d376099edc4b4f002
+      x-runtime:
+      - '0.067255'
+      content-length:
+      - '1'
+      server:
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date:
+      - Tue, 19 Jun 2012 21:12:57 GMT
+      connection:
+      - Keep-Alive
+    body:
+      encoding: US-ASCII
+      string: ! ' '
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:57 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/apps/api123/track_event
+    body:
+      encoding: US-ASCII
+      string: email=event%40mail.com&type=My+Event+Type
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 404
+      message: ! 'Not Found '
+    headers:
+      content-type:
+      - application/json
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-cache
+      x-request-id:
+      - f442df64efe77c79d73e78cc0887eb21
+      x-runtime:
+      - '0.025673'
+      content-length:
+      - '1'
+      server:
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date:
+      - Tue, 19 Jun 2012 21:12:57 GMT
+      connection:
+      - Keep-Alive
+    body:
+      encoding: US-ASCII
+      string: ! ' '
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:57 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track_event
+    body:
+      encoding: US-ASCII
+      string: email=event.com&type=event_type
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: ''
+    headers:
+      content-type:
+      - application/json
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-cache
+      x-request-id:
+      - f05560ee2f8af5b8cd4859e7582939e0
+      x-runtime:
+      - '0.018934'
+      content-length:
+      - '49'
+      server:
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date:
+      - Tue, 19 Jun 2012 21:12:57 GMT
+      connection:
+      - Keep-Alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"errors":["A valid email address is required."]}'
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:57 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track_event
+    body:
+      encoding: US-ASCII
+      string: email=mail%40event.com&type
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 422
+      message: ''
+    headers:
+      content-type:
+      - application/json
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-cache
+      x-request-id:
+      - e03a8c422f271d5296f757d3a36d39fd
+      x-runtime:
+      - '0.022912'
+      content-length:
+      - '41'
+      server:
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date:
+      - Tue, 19 Jun 2012 21:12:57 GMT
+      connection:
+      - Keep-Alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"errors":["An event type is required."]}'
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:57 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/apps/04c66b8488569745e83c56b4c2774fcc6556add4/track_event
+    body:
+      encoding: US-ASCII
+      string: email=valid%40mail.com&type=purchase&amount=39.95
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Pipewise Ruby Gem v. 0.3.0
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 202
+      message: ! 'Accepted '
+    headers:
+      content-type:
+      - application/json
+      x-ua-compatible:
+      - IE=Edge
+      cache-control:
+      - no-cache
+      x-request-id:
+      - 0a93a71bd4ffe5f19e5148b09e5a755c
+      x-runtime:
+      - '0.068276'
+      content-length:
+      - '1'
+      server:
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date:
+      - Tue, 19 Jun 2012 21:12:57 GMT
+      connection:
+      - Keep-Alive
+    body:
+      encoding: US-ASCII
+      string: ! ' '
+    http_version: '1.1'
+  recorded_at: Tue, 19 Jun 2012 21:12:57 GMT
+recorded_with: VCR 2.2.0
