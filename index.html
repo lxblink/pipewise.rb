@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>pipewise.rb by joinwire</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/joinwire/pipewise.rb">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/joinwire/pipewise.rb/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/joinwire/pipewise.rb/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>pipewise.rb</h1>
+          <p>A simple Ruby gem for sending data to the Pipewise API</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/joinwire">joinwire</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>pipewise.rb: Send user data to Pipewise from Ruby</h1>
+
+<p>pipewise.rb allows you to send user and event data to Pipewise via HTTP. You can use this gem to track user properties and lifecycle events.</p>
+
+<h2>Installation</h2>
+
+<pre><code>$ gem install pipewise.rb
+</code></pre>
+
+<h2>Prerequisites</h2>
+
+<p>You must have a Pipewise account and an API key to use this gem. You can find your API key by logging into <a href="http://pipewise.com">pipewise.com</a>.</p>
+
+<h2>Usage</h2>
+
+<p>To send data to Pipewise, you must first initialize the <code>Pipewise</code> module with your API key:</p>
+
+<pre><code># This could go in an initializer file
+Pipewise.configure do |config|
+  config.api_key = '04c66b8488569745e83c56b4c2774fcc6556add4'
+end
+</code></pre>
+
+<p>By default, all communication with api.pipewise.com occurs via HTTPS. If you prefer to use HTTP, set <code>protocol = 'http:'</code> in the initializer:</p>
+
+<pre><code>Pipewise.configure do |config|
+  config.api_key = '04c66b8488569745e83c56b4c2774fcc6556add4'
+  config.protocol = 'http:'
+end
+</code></pre>
+
+<p>With this object, you can send user or event details to Pipewise.</p>
+
+<p><em>Note on HTTPS</em>: When using HTTPS, you may see errors when attempting to verify the SSL certificate if Ruby cannot find a root certificate to trust. If this happens, you can set the <code>ca_file</code> or <code>ca_path</code> in the <code>Pipewise.configure</code> block. For example, the following works on Mac OS X if you have the curl-ca-bundle installed:</p>
+
+<pre><code>config.ca_file = '/opt/local/share/curl/curl-ca-bundle.crt'
+</code></pre>
+
+<h3>Tracking Users</h3>
+
+<p>The <code>track_user</code> method will create a new user or update an existing one. The method requires the user's email address, and also takes an optional hash of custom and standard user properties. If you want to specify the time you first encountered this customer, set <code>:created</code> to a valid <code>Time</code> instance. If omitted, it will be set to the current time by the Pipewise server. This only needs to be set when tracking a user for the first time. Subsequent updates will preserve the original value.</p>
+
+<pre><code># Load a user of your app
+my_app_user = User.find(my_user_id)
+Pipewise.track_user(my_app_user.email, :created =&gt; my_app_user.created_at,
+                    :subscription_type =&gt; 'premium')
+</code></pre>
+
+<p>If the call succeeds, <code>track_user</code> will return true. If there is a problem, an exception will be raised (more on this below).</p>
+
+<h3>Tracking Events</h3>
+
+<p>To track a user lifecycle event, use <code>track_event</code>. This method requires the email address of the user you wish to tie the event to and the type of event that you are recording. It also accepts an optional hash of event properties.</p>
+
+<pre><code>Pipewise.track_event('your-user@email.com', 'Purchased Goods', 
+                     :purchase_category =&gt; 'clothing', :price =&gt; 99.95)
+</code></pre>
+
+<p>If the call succeeds, <code>track_event</code> will return true. If there is a problem, an exception will be raised. See the next section for more details on this.</p>
+
+<h3>Tracking Purchases</h3>
+
+<p>The <code>track_purchase</code> method provides a convenient way to track a user's purchases. This method requires the email address of the user you wish to tie the purchase to and the amount of the purchase, which should be a numeric value. This method can also accept an optional hash of properties describing the purchase.</p>
+
+<pre><code>Pipewise.track_purchase('your-user@email.com', 19.95)
+</code></pre>
+
+<p>Under the covers, this is just a convenience method that wraps a call to <code>track_event</code>.</p>
+
+<h3>Exceptions</h3>
+
+<p>Unsuccessful calls to <code>track_user</code>, <code>track_event</code>, and <code>track_purchase</code> will raise exceptions. The following exceptions are possible:</p>
+
+<ul>
+<li>
+<code>Pipewise::InvalidApiKeyError</code> if the API key is invalid</li>
+<li>
+<code>Pipewise::InvalidRequestError</code> if Pipewise could not process your request due to errors in the format of your request, such as an invalid email address. The exception message may contain more information on why the request failed.</li>
+<li>
+<code>Pipewise::UnexpectedResponseError</code> if Pipewise could not process the response, possibly due to internal errors.</li>
+</ul><h2>Contributing to pipewise.rb</h2>
+
+<ul>
+<li>Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.</li>
+<li>Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.</li>
+<li>Fork the project.</li>
+<li>Start a feature/bugfix branch.</li>
+<li>Commit and push until you are happy with your contribution.</li>
+<li>Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.</li>
+<li>Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.</li>
+</ul><h2>Copyright</h2>
+
+<p>Copyright (c) 2012 Pipewise, Inc. See LICENSE for further details.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
