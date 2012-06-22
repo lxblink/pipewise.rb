@@ -28,9 +28,7 @@ module Pipewise
   end
   
   #Old method
-  def track_user(email, user_properties = {})
-    self.track_customer(email, user_properties)
-  end
+  alias :track_user :track_customer # for backward compatibility
 
   # Sends event info to Pipewise for the user identifed by the given email
   # address (required) and records an event of the given type (required). This method
