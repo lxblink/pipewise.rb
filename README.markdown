@@ -1,6 +1,6 @@
-# pipewise.rb: Send user data to Pipewise from Ruby
+# pipewise.rb: Send customer data to Pipewise from Ruby
 
-pipewise.rb allows you to send user and event data to Pipewise via HTTP. You can use this gem to track user properties and lifecycle events.
+pipewise.rb allows you to send customer and event data to Pipewise via HTTP. You can use this gem to track customer properties and lifecycle events.
 
 ## Installation
 
@@ -27,27 +27,29 @@ By default, all communication with api.pipewise.com occurs via HTTPS. If you pre
       config.protocol = 'http:'
     end
 
-With this object, you can send user or event details to Pipewise.
+With this object, you can send customer or event details to Pipewise.
 
 _Note on HTTPS_: When using HTTPS, you may see errors when attempting to verify the SSL certificate if Ruby cannot find a root certificate to trust. If this happens, you can set the `ca_file` or `ca_path` in the `Pipewise.configure` block. For example, the following works on Mac OS X if you have the curl-ca-bundle installed:
 
     config.ca_file = '/opt/local/share/curl/curl-ca-bundle.crt'
 
-### Tracking Users
+### Tracking Customers
 
-The `track_user` method will create a new user or update an existing one. The method requires the user's email address, and also takes an optional hash of custom and standard user properties. If you want to specify the time you first encountered this customer, set `:created` to a valid `Time` instance. If omitted, it will be set to the current time by the Pipewise server. This only needs to be set when tracking a user for the first time. Subsequent updates will preserve the original value.
+The `track_customer` method will create a new customer or update an existing one. The method requires the customer's email address, and also takes an optional hash of custom and standard customer properties. If you want to specify the time you first encountered this customer, set `:created` to a valid `Time` instance. If omitted, it will be set to the current time by the Pipewise server. This only needs to be set when tracking a customer for the first time. Subsequent updates will preserve the original value.
 
 
-    # Load a user of your app
-    my_app_user = User.find(my_user_id)
-    Pipewise.track_user(my_app_user.email, :created => my_app_user.created_at,
+    # Load a customer of your app
+    my_app_customer = Customer.find(my_customer_id)
+    Pipewise.track_customer(my_app_customer.email, :created => my_app_customer.created_at,
                         :subscription_type => 'premium')
 
-If the call succeeds, `track_user` will return true. If there is a problem, an exception will be raised (more on this below).
+    * Also you can use old method Pipewise.track_user 
+
+If the call succeeds, `track_customer` will return true. If there is a problem, an exception will be raised (more on this below).
 
 ### Tracking Events
 
-To track a user lifecycle event, use `track_event`. This method requires the email address of the user you wish to tie the event to and the type of event that you are recording. It also accepts an optional hash of event properties.
+To track a customer lifecycle event, use `track_event`. This method requires the email address of the customer you wish to tie the event to and the type of event that you are recording. It also accepts an optional hash of event properties.
 
     Pipewise.track_event('your-user@email.com', 'Purchased Goods', 
                          :purchase_category => 'clothing', :price => 99.95)
@@ -56,7 +58,7 @@ If the call succeeds, `track_event` will return true. If there is a problem, an 
 
 ### Tracking Purchases
 
-The `track_purchase` method provides a convenient way to track a user's purchases. This method requires the email address of the user you wish to tie the purchase to and the amount of the purchase, which should be a numeric value. This method can also accept an optional hash of properties describing the purchase.
+The `track_purchase` method provides a convenient way to track a customer's purchases. This method requires the email address of the customer you wish to tie the purchase to and the amount of the purchase, which should be a numeric value. This method can also accept an optional hash of properties describing the purchase.
 
     Pipewise.track_purchase('your-user@email.com', 19.95)
 

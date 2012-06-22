@@ -69,11 +69,11 @@ describe Pipewise do
     end
   end
 
-  describe '.track_user' do
+  describe '.track_customer' do
     context 'with a valid email address' do
       shared_examples_for 'valid config' do
         it 'returns true' do
-          subject.track_user('valid@mail.com', {:created => Time.utc(2012, 5, 7, 23, 30),
+          subject.track_customer('valid@mail.com', {:created => Time.utc(2012, 5, 7, 23, 30),
                              :custom_property => 'Custom property value!'}).should be_true
         end
       end
@@ -92,19 +92,19 @@ describe Pipewise do
     context 'with an invalid API key' do
       it 'raises an InvalidApiKeyError' do
         expect {
-          invalid_pipewise.track_user('user@mail.com')
+          invalid_pipewise.track_customer('user@mail.com')
         }.to raise_error Pipewise::InvalidApiKeyError
       end
     end
 
     context 'with an invalid email address' do
-      let(:vcr_request) { pipewise.track_user('user.com') }
+      let(:vcr_request) { pipewise.track_customer('user.com') }
       let(:expected_message) { /email must be a valid email address/i }
       it_behaves_like 'invalid request'
     end
 
     context 'without an API key' do
-      let(:request_method) { unconfigured_pipewise.track_user('valid@mail.com') }
+      let(:request_method) { unconfigured_pipewise.track_customer('valid@mail.com') }
       it_behaves_like 'no API key given'
     end
   end
